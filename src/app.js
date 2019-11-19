@@ -1,15 +1,37 @@
-const express = require('express')
-const app = express()
-const clientsRoutes = require('./routes/clients')
-const index = require('./routes/index')
+const express = require("express");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const app = express();
+
+mongoose.connect("mongodb://localhost:27017/clientes", {
+  useNewUrlParser: true
+});
+
+let db = mongoose.connection;
+
+db.on("error", console.log.bind(console, "conection error:"));
+db.once("open", () => {
+  console.log("conexão bem feita");
+});
+
+// Rotas
+const clientesRoutes = require("./routes/clientesRoutes");
+const index = require("./routes/index");
 
 // Define middlewares
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
+app.use(bodyParser.json());
 
 // Define rotas
-app.use('/', index)
-app.use('/clients', clientsRoutes)
+app.use("/", index);
+app.use("/clientes", clientesRoutes);
 
-
-module.exports = app
-
+module.exports = app;
