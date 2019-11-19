@@ -1,0 +1,81 @@
+{
+	"info": {
+		"_postman_id": "78988d66-ef50-49ec-b5ff-891fbc51cc88",
+		"name": "Reprograma.MongoApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST Clientes",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Carmela\",\r\n  \"email\": \"carmela@email.com\",\r\n  \"cpf\": 932323232,\r\n  \"dataNascimento\": \"10/10/2015\",\r\n  \"estadoCivil\": \"casada\",\r\n  \"telefone\": 11987655433,\r\n  \"comprou\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/clientes",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"clientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Clientes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/clientes",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"clientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Compradores",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/clientes/compradores",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"clientes",
+						"compradores"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
