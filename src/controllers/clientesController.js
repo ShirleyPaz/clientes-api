@@ -22,12 +22,12 @@ exports.get = (req, res) => {
 
 exports.getByCpf = (req, res) => {
   const cpf = req.params.cpf;
-  Clientes.find((err, clientes) => {
+  Clientes.find({ cpf: cpf }, (err, cliente) => {
     if (err) return res.status(500).send(err);
-    const cliente = clientes.filter(c => c.cpf === cpf);
-    if (!cliente)
-      return res.status(200).send("Ops! Não encontramos essa cliente.");
-    res.status(200).send(cliente);
+    if (cliente.length > 0) return res.status(200).send(cliente);
+    
+   res.status(200).send("Ops! Não encontramos essa cliente.");
+    
   });
 };
 
