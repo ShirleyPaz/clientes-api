@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const router = express.Router();
 
-mongoose.connect("mongodb://localhost:27017/clientes", {
+mongoose.connect("mongodb+srv://admin:admin123@cluster0-nqk7b.mongodb.net/clientes", {
   useNewUrlParser: true
 });
 
