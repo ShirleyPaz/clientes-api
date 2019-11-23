@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const router = express.Router();
 
-mongoose.connect("mongodb+srv://admin:admin123@cluster0-nqk7b.mongodb.net/clientes", {
+mongoose.connect("mongodb://localhost:27017/clientes", {
   useNewUrlParser: true
 });
 
@@ -29,6 +29,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(express.static("public"));
 app.use(bodyParser.json());
 
 // Define rotas
